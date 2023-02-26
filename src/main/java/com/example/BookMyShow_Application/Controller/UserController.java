@@ -21,11 +21,12 @@ public class UserController {
         String message;
         try {
             message = userService.createUser(userEntryDto);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
         }
         catch (Exception e)
         {
            message ="Insufficient Information";
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 }

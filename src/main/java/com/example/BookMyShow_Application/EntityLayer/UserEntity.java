@@ -31,6 +31,6 @@ public class UserEntity {
 
     //One User can have many tickets
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<TheaterEntity> listOfTickets = new ArrayList<>();
+    private List<TicketEntity> listOfTickets = new ArrayList<>();
 
 }

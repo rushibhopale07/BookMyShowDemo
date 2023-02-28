@@ -2,6 +2,8 @@ package com.example.BookMyShow_Application.EntityLayer;
 
 import com.example.BookMyShow_Application.EnumLayer.ShowType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,10 +16,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Show")
+@Table(name = "Shows")
 @Data
 @NoArgsConstructor
 
+@Builder
+@AllArgsConstructor
 public class ShowEntity {
 
     @Id

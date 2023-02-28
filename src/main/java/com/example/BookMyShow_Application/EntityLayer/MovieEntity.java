@@ -13,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Movie")
+
 @Data
 @NoArgsConstructor
 
@@ -40,4 +41,6 @@ public class MovieEntity {
     //One Movie have different shows
     @OneToMany(mappedBy = "movieEntity", cascade = CascadeType.ALL)
     private List<ShowEntity> showEntityList = new ArrayList<>();
+
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Theater")
+
 @Data
 @NoArgsConstructor
 
@@ -22,6 +23,7 @@ public class TheaterEntity {
     private int id;
     @Column(nullable = false)
     private String name;
+
     private String location;
 
     //Theater is parent of Shows and Theater Seats

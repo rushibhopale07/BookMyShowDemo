@@ -9,7 +9,9 @@ public class TheaterConverter {
     {
             TheaterEntity theaterEntity = TheaterEntity.builder()
                     .name(theaterEntryDto.getName())
-                    .location(theaterEntryDto.getLocation()).build();
+                    .location(theaterEntryDto.getLocation())
+                    .build();
+
             return theaterEntity;
     }
 }

@@ -1,7 +1,7 @@
 package com.example.BookMyShow_Application.EntityLayer;
 
 import com.example.BookMyShow_Application.EnumLayer.SeatType;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.example.BookMyShow_Application.EntityLayer;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +28,8 @@ public class TicketEntity {
     private int totalAmount;
     private String ticketId= UUID.randomUUID().toString();
     private  String theaterName;
+
+    private  String bookedSeats;
 
 
     //ticket acts as child of user, user have different tickets

@@ -2,8 +2,7 @@ package com.example.BookMyShow_Application.EntryDTOs;
 
 import com.example.BookMyShow_Application.EnumLayer.Genre;
 import com.example.BookMyShow_Application.EnumLayer.Language;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+
 import lombok.Data;
 
 @Data

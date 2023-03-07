@@ -1,7 +1,7 @@
 package com.example.BookMyShow_Application.EntityLayer;
 
 import com.example.BookMyShow_Application.EnumLayer.SeatType;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,11 +19,13 @@ public class ShowSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private boolean isBooked;
-    private int seatNumber;
+
+    private String seatNumber;
     private int price;
     @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
+
+    private boolean isBooked;
     private Date bookedAt;
 
     //many showseats can have one show

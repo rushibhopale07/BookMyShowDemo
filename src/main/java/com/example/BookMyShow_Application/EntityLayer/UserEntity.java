@@ -1,6 +1,6 @@
 package com.example.BookMyShow_Application.EntityLayer;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

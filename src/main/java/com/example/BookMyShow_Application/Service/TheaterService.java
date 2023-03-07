@@ -29,6 +29,7 @@ public class TheaterService {
         //Set its Attributes
         TheaterEntity theaterEntity= TheaterConverter.convertDtoToEntity(theaterEntryDto);
         //Set the child attributes theaterSeats
+
         List<TheaterSeatEntity> theaterSeatEntityList = createSeatEntity(theaterEntity,theaterEntryDto);
 
         theaterEntity.setListOfTheaterSeats(theaterSeatEntityList);
@@ -42,7 +43,7 @@ public class TheaterService {
     {
         // we need to set premium seats and classic seats
         int noOfClassicSeats= theaterEntryDto.getClassicSeatNo();
-        int noOfPremiumSeats = theaterEntryDto.getClassicSeatNo();
+        int noOfPremiumSeats = theaterEntryDto.getPremiumSeatNo();
 
         // set the seats in theaterseatentity
          List<TheaterSeatEntity> theaterSeatEntityList = new ArrayList<>();
@@ -57,7 +58,7 @@ public class TheaterService {
              theaterSeatEntityList.add(theaterSeatEntity);
          }
 
-        for(int i=1;i<noOfPremiumSeats;i++)
+        for(int i=1;i<=noOfPremiumSeats;i++)
         {
             TheaterSeatEntity theaterSeatEntity = TheaterSeatEntity.builder()
                     .seatNumber(i+"P")
@@ -66,7 +67,6 @@ public class TheaterService {
                     .build();
             theaterSeatEntityList.add(theaterSeatEntity);
         }
-
         return theaterSeatEntityList;
     }
 }

@@ -2,12 +2,13 @@ package com.example.BookMyShow_Application.EntityLayer;
 
 import com.example.BookMyShow_Application.EnumLayer.Genre;
 import com.example.BookMyShow_Application.EnumLayer.Language;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

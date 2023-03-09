@@ -29,5 +29,17 @@ public class ShowController {
         }
     }
 
-
+    @GetMapping("/getShow")
+    public ResponseEntity<String> getShowByTheaterandMovie(@RequestParam("theaterid") int theaterId,@RequestParam("movieid") int movieId)
+    {
+        try{
+            String message= showsService.getShowByTheaterandMovie(theaterId,movieId);
+            return new ResponseEntity<>(message, HttpStatus.FOUND);
+        }
+        catch (Exception e)
+        {
+            String message= e.getMessage();
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
+    }
 }

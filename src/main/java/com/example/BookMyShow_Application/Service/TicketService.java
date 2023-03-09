@@ -2,7 +2,6 @@ package com.example.BookMyShow_Application.Service;
 
 import com.example.BookMyShow_Application.Converters.TicketConverter;
 import com.example.BookMyShow_Application.EntityLayer.*;
-import com.example.BookMyShow_Application.EntryDTOs.ShowsEntryDto;
 import com.example.BookMyShow_Application.EntryDTOs.TicketEntryDto;
 import com.example.BookMyShow_Application.Repository.ShowsRepository;
 import com.example.BookMyShow_Application.Repository.TicketRepository;

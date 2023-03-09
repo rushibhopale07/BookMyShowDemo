@@ -44,4 +44,24 @@ public class MovieService {
 
         return movieList;
     }
+
+    public String getMaxShowOfMovie() throws Exception
+    {
+        List<MovieEntity> movieEntityList = movieRepository.findAll();
+        int maxId=0;
+        int maxShow=0;
+        for(MovieEntity movieEntity: movieEntityList)
+        {
+            if(movieEntity.getShowEntityList().size() > maxShow)
+            {
+                maxId= movieEntity.getId();
+                maxShow = movieEntity.getShowEntityList().size();
+            }
+        }
+        if(maxShow == 0)
+            throw new Exception("Movie Not Available");
+
+        String movieName= movieRepository.findById(maxId).get().getMovieName() ;
+        return movieName + " with "+maxShow+" Shows";
+    }
 }

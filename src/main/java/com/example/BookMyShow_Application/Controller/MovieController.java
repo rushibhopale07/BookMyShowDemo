@@ -35,4 +35,22 @@ public class MovieController {
     public List<MovieResponse> getAllMovies() {
         return movieService.getAllMovies();
     }
+
+    //get movie name with max no of shows acros all places
+    // we need to traverse movie one by one and count the max no of shows
+
+    @GetMapping("/get-max-show")
+    public ResponseEntity<String> getMaxShowNoOfMovie()
+    {
+        try
+        {
+           String message = movieService.getMaxShowOfMovie();
+           return new ResponseEntity<>(message, HttpStatus.FOUND);
+        }
+        catch (Exception e)
+        {
+            String error = e.getMessage();
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
+    }
 }

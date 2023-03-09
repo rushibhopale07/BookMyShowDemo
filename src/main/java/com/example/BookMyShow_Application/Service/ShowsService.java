@@ -98,6 +98,30 @@ public class ShowsService {
 
     }
 
+//get show time for theater and movie
 
+    public String getShowByTheaterandMovie(int theaterId, int movieId) throws Exception
+    {
+        if(theaterRepository.existsById(theaterId) && movieRepository.existsById(movieId))
+        {
+            TheaterEntity theaterEntity = theaterRepository.findById(theaterId).get();
+            MovieEntity movieEntity = movieRepository.findById(movieId).get();
+
+            //find the shows list at particular theater
+            List<ShowEntity> showEntityList = theaterEntity.getListOfShows();
+
+            String ans= "Shows Available of Movie "+movieEntity.getMovieName()+" At Theater "+theaterEntity.getName()+" is \n";
+            for(ShowEntity showEntity: showEntityList)
+            {
+                if (showEntity.getMovieEntity().equals(movieEntity))
+                {
+                    ans+="Date :"+showEntity.getShowDate()+" Time :"+showEntity.getShowTime()+"\n";
+                }
+            }
+            return ans;
+        }
+        else
+            throw new Exception("Invalid movie id or theater id");
+    }
 
 }

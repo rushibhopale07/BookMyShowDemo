@@ -7,6 +7,7 @@ import com.example.BookMyShow_Application.EntryDTOs.TheaterEntryDto;
 import com.example.BookMyShow_Application.EnumLayer.SeatType;
 import com.example.BookMyShow_Application.Repository.TheaterRepository;
 import com.example.BookMyShow_Application.Repository.TheaterSeatRepository;
+import com.example.BookMyShow_Application.ResponseDTOs.TheaterResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,23 +51,40 @@ public class TheaterService {
 
          for(int i=1;i<=noOfClassicSeats;i++)
          {
-             TheaterSeatEntity theaterSeatEntity = TheaterSeatEntity.builder()
+             TheaterSeatEntity theaterSeat = TheaterSeatEntity.builder()
                      .seatNumber(i+"C")
                      .seatType(SeatType.CLASSIC)
                      .theaterEntity(theaterEntity)
                      .build();
-             theaterSeatEntityList.add(theaterSeatEntity);
+             theaterSeatEntityList.add(theaterSeat);
          }
 
         for(int i=1;i<=noOfPremiumSeats;i++)
         {
-            TheaterSeatEntity theaterSeatEntity = TheaterSeatEntity.builder()
+            TheaterSeatEntity theaterSeat = TheaterSeatEntity.builder()
                     .seatNumber(i+"P")
                     .seatType(SeatType.PREMIUM)
                     .theaterEntity(theaterEntity)
                     .build();
-            theaterSeatEntityList.add(theaterSeatEntity);
+            theaterSeatEntityList.add(theaterSeat);
         }
         return theaterSeatEntityList;
+    }
+
+    public List<TheaterResponse> Theaters()
+    {
+
+        List<TheaterResponse> theaterList = new ArrayList<>();
+        List<TheaterEntity> theaterEntityList = theaterRepository.findAll();
+        for(TheaterEntity theaterEntity: theaterEntityList)
+        {
+            TheaterResponse theaterResponse = TheaterResponse.builder()
+                    .id(theaterEntity.getId())
+                    .name(theaterEntity.getName())
+                    .sizeOfTheater(theaterEntity.getListOfTheaterSeats().size())
+                    .build();
+            theaterList.add(theaterResponse);
+        }
+        return theaterList;
     }
 }

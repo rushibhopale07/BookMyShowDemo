@@ -66,9 +66,6 @@ public class ShowsService {
     }
 
     private List<ShowSeatEntity> createShowSeatEntity(ShowsEntryDto showEntryDto,ShowEntity showEntity){
-
-
-
         //Now the goal is to create the ShowSeatEntity
         //We need to set its attribute
 

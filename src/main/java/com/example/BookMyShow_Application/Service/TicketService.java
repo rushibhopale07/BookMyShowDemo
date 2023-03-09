@@ -8,8 +8,11 @@ import com.example.BookMyShow_Application.Repository.ShowsRepository;
 import com.example.BookMyShow_Application.Repository.TicketRepository;
 import com.example.BookMyShow_Application.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +25,9 @@ public class TicketService {
     ShowsRepository showsRepository;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    JavaMailSender javaMailSender;
 
     public String addTicket(TicketEntryDto ticketEntryDto) throws Exception
     {
@@ -81,6 +87,20 @@ public class TicketService {
         userEntity.setListOfTickets(ticketEntityList1);
 
         userRepository.save(userEntity);
+
+        String body = "Hi this is to confirm your booking for seat No "+allotedSeats +"for the movie : " + ticketEntity.getMovieName();
+
+
+        MimeMessage mimeMessage=javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true);
+        mimeMessageHelper.setFrom("rushibhopale2159@gmail.com");
+        mimeMessageHelper.setTo(userEntity.getEmail());
+        mimeMessageHelper.setText(body);
+        mimeMessageHelper.setSubject("Confirming your booked Ticket");
+
+        javaMailSender.send(mimeMessage);
+
+
 
         return "Ticket has Successfully added";
     }
